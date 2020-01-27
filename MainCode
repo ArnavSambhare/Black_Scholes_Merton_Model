@@ -1,6 +1,6 @@
+import numpy as np
+import scipy.stats
 class Black_Scholes_Merton():
-  import numpy as np
-  import scipy.stats
   def __init__(self, S0, X, r, T, sig, typ="call"):
     self.price = None
     self.delta = None
@@ -17,7 +17,7 @@ class Black_Scholes_Merton():
     self.d2 = self.d1 - (self.sig*np.sqrt(self.T))
     self.typ = typ
   
-  def calculate_call_price(self):
+  def calculate_price(self):
     if self.typ == "call":
       self.price = (self.S0*scipy.stats.norm.cdf(self.d1)) - (self.X*np.exp(-self.r*self.T)*scipy.stats.norm.cdf(self.d2))
     elif self.typ == "put":
